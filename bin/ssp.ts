@@ -1,5 +1,6 @@
 import { App } from '@aws-cdk/core'
 import * as ssp from '@aws-quickstart/ssp-amazon-eks';
+import { TeamPlatform, TeamApplication } from '../teams';
 
 const app = new App();
 
@@ -13,9 +14,8 @@ const blueprint = ssp.EksBlueprint.builder()
     .addOns(
       // supply other necessary add-ons
     )
-    .teams(
-      // add teams
-    );
+    .teams(new TeamPlatform(String(account)), new TeamApplication('application'));
+      
       
 // Build code pipeline and add stages
 ssp.CodePipelineStack.builder()
