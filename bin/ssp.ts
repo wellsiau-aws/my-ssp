@@ -12,7 +12,7 @@ const blueprint = ssp.EksBlueprint.builder()
     .account(account) 
     .region('us-west-2')
     .addOns(
-      // supply other necessary add-ons
+      new ssp.ClusterAutoScalerAddOn  
     )
     .teams(new TeamPlatform(String(account)), new TeamApplication('application'));
       
