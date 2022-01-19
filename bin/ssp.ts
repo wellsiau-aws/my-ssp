@@ -44,7 +44,7 @@ const blueprint = ssp.EksBlueprint.builder()
     .account(account) 
     .region('us-west-2')
     .addOns(
-      new ssp.ClusterAutoScalerAddOn  
+      new ssp.ClusterAutoScalerAddOn
     )
     .teams(new TeamPlatform(String(account)), new TeamApplication('application'));
       
@@ -61,16 +61,16 @@ ssp.CodePipelineStack.builder()
     .stage({
       id: 'dev',
       stackBuilder: blueprint.clone('us-west-2')
-      .addOns(devBootstrapArgo)
+      //.addOns(devBootstrapArgo)
     })
     .stage({
       id: 'test',
       stackBuilder: blueprint.clone('us-east-1')
-      .addOns(testBootstrapArgo)
+      //.addOns(testBootstrapArgo)
     })
     .stage({
       id: 'prod',
       stackBuilder: blueprint.clone('us-east-2')
-      .addOns(prodBootstrapArgo)
+      //.addOns(prodBootstrapArgo)
     })
     .build(app, 'my-first-stack', {env});
